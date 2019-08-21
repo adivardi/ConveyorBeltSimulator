@@ -1,0 +1,41 @@
+
+X = \begin{bmatrix}p \\ v\end{bmatrix} = \begin{bmatrix}x \\ y \\ \dot{x} \\ \dot{y}\end{bmatrix}
+\\
+
+\\\\\\
+u = v_c = \begin{bmatrix}v_c_x \\ v_c_y\end{bmatrix}
+\\
+System Dynamics:\\
+\left\{\begin{matrix}
+p_k = p_{k-1} + dt*v_{k-1}
+\\ 
+v_k = v_{c_{k-1}} = u_{k-1}
+\end{matrix}\right.
+\Leftrightarrow 
+\left\{\begin{matrix}
+x_k = x_{k-1} + dt*\dot{x}_{k-1}
+\\ 
+y_k = y_{k-1} + dt*\dot{y}_{k-1}
+\\ 
+\dot{x}_k = u_{{k-1}_x}
+\\ 
+\dot{y}_k = u_{{k-1}_y}
+\end{matrix}\right.
+\Leftrightarrow  \\
+X_k = \begin{bmatrix}
+1 & 0 & dt & 0\\ 
+0 & 1 & 0 & dt\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0
+\end{bmatrix}X_{k-1}+\begin{bmatrix}
+0 & 0\\ 
+0 & 0\\ 
+1 & 0\\ 
+0 & 1
+\end{bmatrix}u_{k-1} + \epsilon_t = A X_{k-1}+B u_{k-1}+\epsilon_t
+\\
+\epsilon_t \sim  N(0,R_t)
+\\
+Z_t = X_t+\delta_t \rightarrow \Leftrightarrow Z_t=I_4X_t \Leftrightarrow Z_t=CX_t
+\\\\
+\delta_t \sim  N(0,Q_t)

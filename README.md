@@ -7,7 +7,7 @@ This simulator uses python2.7, pygame and pykalman.
 There are 3 scripts in the repo, all can be executed with python 2.7:
 1. conveyorKalman.py: Runs the full simulation and state estimation as described in the next section.
 2. genetorSimle.py: Simple version with basic environment modelling and without the state estimation.
-3. conveyorSimRos_deprecated: A deprecated buggy version with ROS
+3. conveyorSimRos_deprecated.py: A deprecated buggy version with ROS
 
 ## Models and State Estimation
 ### Environment Model
@@ -42,3 +42,23 @@ Using pykalman, each object is associated with a Kalman Filter that estimates it
 The object's position is then estimated using the KF. The prediction step is done using the ideal conveyor's speed, and the correction step using the noisy observation.
 The following equations describe the system:
 
+State:
+
+![image info](./equations/state.png)
+
+Input:
+
+![image info](./equations/input.png)
+
+System:
+
+![image info](./equations/system.png)
+
+Where epsilon is a Gaussian additive process noise.
+
+Measurement Model:
+Since we are directly observing the object's location and speed, the observation model is:
+
+![image info](./equations/measurement.png)
+
+Where delta is a Gaussian additive measurement noise.
