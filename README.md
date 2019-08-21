@@ -1,6 +1,7 @@
 # Conveyor Belt Simulator and State Estimation
 This is a simple simulator for a conveyor belt, with the purpose to enable research and test algorithms related to state estimation and tracking of objects on the conveyor.
 Originally, this project treated boxes, but it can abstract any object with similar dimensions and characteristics.
+
 This simulator uses python2.7, pygame and pykalman.
 
 ## Running
@@ -62,3 +63,6 @@ Since we are directly observing the object's location and speed, the observation
 ![image info](./equations/measurement.png)
 
 Where delta is a Gaussian additive measurement noise.
+
+## Results
+Some videos in the `videos` folder show results for different level of noise.
