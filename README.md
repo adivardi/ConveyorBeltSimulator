@@ -10,6 +10,10 @@ There are 3 scripts in the repo, all can be executed with python 2.7:
 2. genetorSimle.py: Simple version with basic environment modelling and without the state estimation.
 3. conveyorSimRos_deprecated.py: A deprecated buggy version with ROS
 
+## Reuqirements:
+- python 2.7
+- pygame (https://www.pygame.org/)
+- pykalman (https://pykalman.github.io/)
 ## Models and State Estimation
 ### Environment Model
 The environment represents the conveyor belt. It is represents by width and height, a direction and speed of motion, as well as an area which represents a free area without moving belt (e.g. a collection area). As a result, objects on the conveyor move in at the conveyor speed along its direction and stop when reaching the limit. The conveyor linear speed is generated from an uniform distribution, given a mean and a standard deviation.
@@ -37,7 +41,7 @@ Objects are always generated at the top of the conveyor, but can start horizonta
 Objects also have elasticity.
 
 ### State Estimation
-In addition to simulation the conveyor belt, we provide a state estimation of the objects using a Kalman Filter.
+In addition to simulation the conveyor belt, we provide a state estimation of the objects using an Extended Kalman Filter.
 Using pykalman, each object is associated with a Kalman Filter that estimates its centroid's position. At each timestep, after the objects moved by the simulation, an observation of their position is taken. The observation is corrupted using additive Gaussian noise.
 
 The object's position is then estimated using the KF. The prediction step is done using the ideal conveyor's speed, and the correction step using the noisy observation.
