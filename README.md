@@ -62,11 +62,27 @@ System:
 Where epsilon is a Gaussian additive process noise.
 
 Measurement Model:
+
 Since we are directly observing the object's location and speed, the observation model is:
 
 ![image info](./equations/measurement.png)
 
 Where delta is a Gaussian additive measurement noise.
+
+**With Cache:**
+```bash
+v = g(x) =  v_c if (x<x_cache & y<y_cache)
+            0 else
+```
+=> Switching system => Non-linear KF
+
+**With Collisions:** (not implemented)
+
+Run collide function as in simulation. Change box velocity if collision occured.
+
+=> Compte g(x) based on v_c, chache and collisions.
+
+=> Highly non-linear and depends on the environment.
 
 ## Results
 Some videos in the `videos` folder show results for different level of noise.
